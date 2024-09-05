@@ -2,20 +2,15 @@
 layout: base
 title: Student Home 
 description: Home Page
+author: Collin Ge
 image: /images/mario_animation.png
 hide: true
 ---
 
-When setting up the tools, the biggest problem I encounter is the problem of root. Which is most possibly caused by me forgetting the first username and password. First, I tried to check my username on terminal, but only my username show, which is my first account "collin". After that, I find out that the password does not show and I don't know how to edit it. I choose to create a new account name "Qixiang" and set up the password and username. But it still shows the root in front of my account. At last, I tried deleting everything and follow from step one and see if it fix, then I download everything I need and download the vs code, then it finally work and it quit root.
-
-<!-- Liquid:  statements -->
-
-<!-- Include submenu from _includes to top of pages -->
-{% include nav/home.html %}
 <!--- Concatenation of site URL to frontmatter image  --->
 {% assign sprite_file = site.baseurl | append: page.image %}
 <!--- Has is a list variable containing mario metadata for sprite --->
-{% assign hash = site.data.mario_metadata %}  
+{% assign hash = site.data.mario_metadata %}
 <!--- Size width/height of Sprit images --->
 {% assign pixels = 256 %}
 
@@ -96,17 +91,32 @@ When setting up the tools, the biggest problem I encounter is the problem of roo
 
     startWalking() {
       this.stopAnimate();
-      this.animate(this.obj["Walk"], 3);
+      this.animate(this.obj["Walk"], 7.5);
+    }
+
+    startWalkingLeft() {
+        this.stopAnimate();
+        this.animate(this.obj["WalkL"], -7.5);
+    }
+
+    startRunningLeft() {
+        this.stopAnimate();
+        this.animate(this.obj["Run1L"], -15);
     }
 
     startRunning() {
       this.stopAnimate();
-      this.animate(this.obj["Run1"], 6);
+      this.animate(this.obj["Run1"], 15);
     }
 
     startPuffing() {
       this.stopAnimate();
       this.animate(this.obj["Puff"], 0);
+    }
+
+    startPuffingLeft() {
+      this.stopAnimate();
+      this.animate(this.obj["PuffL"], 0);
     }
 
     startCheering() {
@@ -124,6 +134,11 @@ When setting up the tools, the biggest problem I encounter is the problem of roo
       this.animate(this.obj["Rest"], 0);
     }
 
+    startRestingLeft() {
+      this.stopAnimate();
+      this.animate(this.obj["RestL"], 0);
+    }
+
     stopAnimate() {
       clearInterval(this.tID);
     }
@@ -136,21 +151,53 @@ When setting up the tools, the biggest problem I encounter is the problem of roo
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      if (event.repeat) {
-        mario.startCheering();
-      } else {
         if (mario.currentSpeed === 0) {
-          mario.startWalking();
-        } else if (mario.currentSpeed === 3) {
-          mario.startRunning();
+            mario.startWalking();
+        } 
+        else if (mario.currentSpeed === 7.5) {
+            mario.startRunning();
         }
-      }
-    } else if (event.key === "ArrowLeft") {
+        else if (mario.currentSpeed < 0){
+            mario.startResting();
+        }
+    } 
+
+    else if (event.key === "ArrowDown") {
       event.preventDefault();
       if (event.repeat) {
         mario.stopAnimate();
-      } else {
+      } 
+      else if (mario.currentSpeed >= 0){
         mario.startPuffing();
+      }
+      else {
+        mario.startPuffingLeft();
+      }
+    } 
+
+    else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        if (mario.currentSpeed === 0) {
+            mario.startWalkingLeft();
+        } 
+        else if (mario.currentSpeed === -7.5) {
+            mario.startRunningLeft();
+        }
+        else if (mario.currentSpeed > 0){
+            mario.startRestingLeft();
+        }
+    }
+
+    else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (mario.currentSpeed === 0) {
+        mario.startFlipping();
+      }
+      else if (mario.currentSpeed < 0) {
+        mario.startRestingLeft();
+      }
+      else if (mario.currentSpeed > 0) {
+        mario.startResting();
       }
     }
   });
@@ -162,7 +209,7 @@ When setting up the tools, the biggest problem I encounter is the problem of roo
       // move right
       if (currentSpeed === 0) { // if at rest, go to walking
         mario.startWalking();
-      } else if (currentSpeed === 3) { // if walking, go to running
+      } else if (currentSpeed === 7.5) { // if walking, go to running
         mario.startRunning();
       }
     } else {
@@ -176,17 +223,23 @@ When setting up the tools, the biggest problem I encounter is the problem of roo
     mario.stopAnimate();
   });
 
-  //start animation on window focus
-  window.addEventListener("focus", () => {
-     mario.startFlipping();
-  });
-
   //start animation on page load or page refresh
   document.addEventListener("DOMContentLoaded", () => {
     // adjust sprite size for high pixel density devices
     const scale = window.devicePixelRatio;
     const sprite = document.querySelector(".sprite");
-    sprite.style.transform = `scale(${0.2 * scale})`;
+    sprite.style.transform = `scale(${.5 * scale})`;
     mario.startResting();
   });
+
 </script>
+
+When setting up the tools, the biggest problem I encounter is the problem of root. Which is most possibly caused by me forgetting the first username and password. First, I tried to check my username on terminal, but only my username show, which is my first account "collin". After that, I find out that the password does not show and I don't know how to edit it. I choose to create a new account name "Qixiang" and set up the password and username. But it still shows the root in front of my account. At last, I tried deleting everything and follow from step one and see if it fix, then I download everything I need and download the vs code, then it finally work and it quit root.
+
+
+<html lang="en">
+<body>
+  <button>CSP</button>
+</body>
+</html>
+
