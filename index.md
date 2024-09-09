@@ -147,7 +147,6 @@ hide: true
   const mario = new Mario(mario_metadata);
 
   ////////// event control /////////
-
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
@@ -234,12 +233,63 @@ hide: true
 
 </script>
 
-When setting up the tools, the biggest problem I encounter is the problem of root. Which is most possibly caused by me forgetting the first username and password. First, I tried to check my username on terminal, but only my username show, which is my first account "collin". After that, I find out that the password does not show and I don't know how to edit it. I choose to create a new account name "Qixiang" and set up the password and username. But it still shows the root in front of my account. At last, I tried deleting everything and follow from step one and see if it fix, then I download everything I need and download the vs code, then it finally work and it quit root.
-
 
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey</title>
+    <style>
+        .section {
+            border: 3px solid white; 
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;          /* Enables flexbox */
+            justify-content: center; /* Centers content horizontally */
+            align-items: center;     /* Centers content vertically */
+            flex-direction: column;
+        }
+      img{
+        display: block;
+        margin: auto;
+      }
+    </style>
+</head>
 <body>
-  <button>CSP</button>
+    <h3>My Journey</h3>
+    <div>
+     <p>
+     </p>
+    </div>
+    <img src="images/dragon.jpg" alt="Image" width="60%">
+    <div>
+      <p>
+      </p>
+    </div>
+    <div class="section">
+        <p>
+            When setting up the tools, the biggest problem I encounter is the problem of root. Which is most possibly caused by me forgetting the first username and password. First, I tried to check my username on terminal, but only my username show, which is my first account "collin". After that, I find out that the password does not show and I don't know how to edit it. I choose to create a new account name "Qixiang" and set up the password and username. But it still shows the root in front of my account. At last, I tried deleting everything and follow from step one and see if it fix, then I download everything I need and download the vs code, then it finally work and it quit root.
+        </p>
+    </div>
 </body>
+  <div class="section" class="nklink">
+    <button>CSP Button</button>
+    <div>
+     <p>
+     </p>
+    </div>
+     <a href="https://nighthawkcoders.github.io/portfolio_2025/navigation/section/csp" class="nklink">
+      <button>Nighthawk Instruction</button>
+     </a>
+    <div>
+     <p>
+     </p>
+     <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/tools/home" class="nklink">
+      <button>CSP Tool Setup</button>
+     </a>
+    </div>
+  </div>
+
 </html>
 
