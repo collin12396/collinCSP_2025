@@ -255,6 +255,29 @@ hide: true
         margin: auto;
       }
     </style>
+    <style>
+    button {
+        background-color: #4CAF50;   /* Green background */
+        color: white;                /* White text */
+        padding: 12px 24px;          /* Padding for button size */
+        border: none;                /* Remove default border */
+        border-radius: 12px;         /* Smooth round corners */
+        cursor: pointer;             /* Pointer cursor on hover */
+        font-size: 16px;             /* Text size */
+        transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+    }
+
+    button:hover {
+        background-color: #45a049;    /* Darker green when hovered */
+        opacity: 0.7;                 /* Fade effect */
+        transform: scale(1.05);       /* Slight zoom effect */
+    }
+
+    .nklink button {
+        margin-top: 10px;            /* Adds space between buttons */
+    }
+</style>
+
 </head>
 <body>
     <h3>My Journey</h3>
