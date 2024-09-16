@@ -313,6 +313,10 @@ hide: true
      </a>
     </div>
   </div>
-
+  <div>
+    <a href="http://127.0.0.1:4100/collinCSP_2025/snake/" class="nklink">
+      <button>Snake Game</button>
+    </a>
+  </div>
 </html>
 
