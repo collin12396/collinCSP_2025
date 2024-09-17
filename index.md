@@ -395,10 +395,10 @@ hide: true
         <a id="middle" href="https://jasonguan1012.github.io/jgCSA_2025/hacks/2024/09/01/APCSAPlanning_IPYNB_2_.html">Planning Page &nbsp; ▶</a>
         <div class="submenu-content">
             <a href="https://example.com/submenu1">Things that I attempted</a>
-            <a href="https://example.com/submenu2">Accomplishment</a>
+            <a href="http://127.0.0.1:4100/collinCSP_2025/calculator/">Calculator</a>
         </div>
     </div>
-    <a id="bottom" href="https://jasonguan1012.github.io/jgCSA_2025/about/">About Pages</a>
+    <a id="bottom" href="http://127.0.0.1:4100/collinCSP_2025/about/">About Pages</a>
   </div>
 </div>
   <div class="section" class="nklink">
