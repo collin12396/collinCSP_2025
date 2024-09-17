@@ -28,10 +28,11 @@ image: ../images/yanhuoqi.jpeg
         }
         .familypic-edit {
             display: flex; 
-            justify-content: center; 
-            align-items: center;
+            justify-content: left; 
+            align-items: left;
         }
     </style>
+
 </head>
 <body>
     <div>
@@ -55,11 +56,18 @@ image: ../images/yanhuoqi.jpeg
         <p>
         Hi, my name is Collin Ge. I am an 11th grade student in Del Norte High school. I have a family of four people and one dog. What I like to do in my daily life is to find delicious food and learn how to cook them. I also like making stuff out of wood. I like a lot of things about engineer and hope to get a career about this. I am very into the creation of both nature and human, looking at those beautiful scene make me feel calm and relax. Everytime staying in home, especially if there is rain, make my day wonderful and complete.
         </p>
+        <ul>
+            <li>I am an immigrant who moved here 5 years ago</li>
+            <li>I have 1 older brother who works</li>
+            <li>My goal is to get into a decent college</li>
+            <li>My life goal is to have a calm life with family</li>
+        </ul>
     </div>
     <div>
+    <p></p>
     </div>
     <div class="familypic-edit">
-        <img src="../images/family.png" alt="family" width="50%">
+        <img src="../images/family.png" alt="family" width="50%" style="border-radius: 20px">
     </div>
 </body>
 </html>

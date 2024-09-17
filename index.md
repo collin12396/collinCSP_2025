@@ -257,14 +257,14 @@ hide: true
     </style>
     <style>
     button {
-        background-color: #4CAF50;   /* Green background */
-        color: white;                /* White text */
-        padding: 12px 24px;          /* Padding for button size */
-        border: none;                /* Remove default border */
-        border-radius: 12px;         /* Smooth round corners */
-        cursor: pointer;             /* Pointer cursor on hover */
-        font-size: 16px;             /* Text size */
-        transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+        background-color: #4CAF50;   
+        color: white;                
+        padding: 12px 24px;          
+        border: none;                
+        border-radius: 12px;         
+        cursor: pointer;             
+        font-size: 16px;             
+        transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; 
     }
 
     button:hover {
@@ -296,6 +296,109 @@ hide: true
         </p>
     </div>
 </body>
+<style>
+    .paste-button {
+        position: relative;
+        display: block;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .button {
+        background-color: #88bc4c;
+        color: #212121;
+        padding: 10px 15px;
+        font-size: 15px;
+        font-weight: bold;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+    .dropdown-content, .submenu-content {
+        display: none;
+        font-size: 13px;
+        position: absolute;
+        z-index: 1;
+        min-width: 200px;
+        background-color: #212121;
+        border: 2px solid #88bc4c;
+        border-radius: 0px 15px 15px 15px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-content a, .submenu-content a {
+        color: #88bc4c;
+        padding: 8px 10px;
+        text-decoration: none;
+        display: block;
+        transition: 0.1s;
+    }
+
+    .dropdown-content a:hover, .submenu-content a:hover {
+        background-color: #88bc4c;
+        color: #212121;
+    }
+
+    .dropdown-content a:focus, .submenu-content a:focus {
+        background-color: #212121;
+        color: #88bc4c;
+    }
+
+    .dropdown-content #top:hover {
+        border-radius: 0px 13px 0px 0px;
+    }
+
+    .dropdown-content #bottom:hover {
+        border-radius: 0px 0px 13px 13px;
+    }
+
+    .paste-button:hover button {
+        border-radius: 15px 15px 0px 0px;
+    }
+
+    .paste-button:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Submenu styles */
+    .submenu {
+        position: relative;
+    }
+
+    .submenu-content {
+        top: 0;
+        left: 100%;
+        border-radius: 0 15px 15px 15px;
+    }
+
+    .submenu-content a:first-child:hover {
+        border-radius: 0px 13px 0px 0px;
+    }
+
+    .submenu-content a:last-child:hover {
+        border-radius: 0px 0px 13px 13px;
+    }
+
+    .submenu:hover .submenu-content {
+        display: block;
+    }
+</style>
+
+
+<div class="paste-button">
+  <button class="button">Menu &nbsp; ▼</button>
+  <div class="dropdown-content">
+    <a id="top" href="https://jasonguan1012.github.io/jgCSA_2025/hacks/2024/09/01/JavaScript_IPYNB_2_.html">JavaScript cell</a>
+    <div class="submenu">
+        <a id="middle" href="https://jasonguan1012.github.io/jgCSA_2025/hacks/2024/09/01/APCSAPlanning_IPYNB_2_.html">Planning Page &nbsp; ▶</a>
+        <div class="submenu-content">
+            <a href="https://example.com/submenu1">Things that I attempted</a>
+            <a href="https://example.com/submenu2">Accomplishment</a>
+        </div>
+    </div>
+    <a id="bottom" href="https://jasonguan1012.github.io/jgCSA_2025/about/">About Pages</a>
+  </div>
+</div>
   <div class="section" class="nklink">
     <button>CSP Button</button>
     <div>
