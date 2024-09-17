@@ -384,7 +384,9 @@ hide: true
     }
 </style>
 
-
+<div>
+<p></p>
+</div>
 <div class="paste-button">
   <button class="button">Menu &nbsp; ▼</button>
   <div class="dropdown-content">
@@ -417,9 +419,13 @@ hide: true
     </div>
   </div>
   <div>
+    <p></p>
     <a href="http://127.0.0.1:4100/collinCSP_2025/snake/" class="nklink">
       <button>Snake Game</button>
     </a>
+  </div>
+  <div>
+  <p></p>
   </div>
 </html>
 
