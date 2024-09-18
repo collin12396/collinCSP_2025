@@ -392,9 +392,9 @@ hide: true
   <div class="dropdown-content">
     <a id="top" href="https://jasonguan1012.github.io/jgCSA_2025/hacks/2024/09/01/JavaScript_IPYNB_2_.html">JavaScript cell</a>
     <div class="submenu">
-        <a id="middle" href="https://jasonguan1012.github.io/jgCSA_2025/hacks/2024/09/01/APCSAPlanning_IPYNB_2_.html">Planning Page &nbsp; ▶</a>
+        <a id="middle" href="https://nighthawkcoders.github.io/portfolio_2025/javascript/project/play">Javascript hacks &nbsp; ▶</a>
         <div class="submenu-content">
-            <a href="https://example.com/submenu1">Things that I attempted</a>
+            <a href="http://127.0.0.1:4100/collinCSP_2025/cookieclicker/">Cookie clicker</a>
             <a href="http://127.0.0.1:4100/collinCSP_2025/calculator/">Calculator</a>
         </div>
     </div>
