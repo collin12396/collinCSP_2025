@@ -11,6 +11,7 @@ image: ../images/cnflag.png
 image: ../images/soup.jpg
 image: ../images/town.jpg
 image: ../images/greatwall.jpg
+comment: true
 ---
 
 <html lang="en">
