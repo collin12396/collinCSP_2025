@@ -26,7 +26,7 @@ permalink: /calculator/
     padding: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 60%; /* Adjusted to move the calculator down */
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -40,7 +40,7 @@ permalink: /calculator/
     text-align: right;
     border: 2px solid #444;
   }
-  .calculator-number, .calculator-operation, .calculator-clear, .calculator-equals {
+  .calculator-number, .calculator-operation, .calculator-clear, .calculator-equals, .extra-operation {
     background: #444;
     color: #fff;
     border-radius: 8px;
@@ -51,7 +51,7 @@ permalink: /calculator/
     cursor: pointer;
     transition: background 0.3s;
   }
-  .calculator-number:hover, .calculator-operation:hover, .calculator-clear:hover, .calculator-equals:hover {
+  .calculator-number:hover, .calculator-operation:hover, .calculator-clear:hover, .calculator-equals:hover, .extra-operation:hover {
     background: #555;
   }
   .calculator-clear {
@@ -89,21 +89,25 @@ permalink: /calculator/
     <div class="calculator-number">0</div>
     <div class="calculator-number">.</div>
     <div class="calculator-equals">=</div>
+    <!-- row 5 (new operations) -->
+    <div class="extra-operation">/</div> <!-- Division -->
+    <div class="extra-operation">^</div> <!-- Exponent -->
+    <div class="extra-operation">√</div> <!-- Square Root -->
+    <div class="extra-operation">%</div> <!-- Percentage -->
   </div>
 </div>
 
 <!-- JavaScript (JS) implementation of the calculator. -->
 <script>
-// initialize important variables to manage calculations
 var firstNumber = null;
 var operator = null;
 var nextReady = true;
-// Build objects containing key elements
 const output = document.getElementById("output");
 const numbers = document.querySelectorAll(".calculator-number");
 const operations = document.querySelectorAll(".calculator-operation");
 const clear = document.querySelectorAll(".calculator-clear");
 const equals = document.querySelectorAll(".calculator-equals");
+const extras = document.querySelectorAll(".extra-operation");
 
 // Number buttons listener
 numbers.forEach(button => {
@@ -141,7 +145,7 @@ operations.forEach(button => {
 // Operator action
 function operation(choice) {
   if (firstNumber == null) {
-    firstNumber = parseInt(output.innerHTML);
+    firstNumber = parseFloat(output.innerHTML);
     nextReady = true;
     operator = choice;
     return;
@@ -167,6 +171,12 @@ function calculate(first, second) {
       break;
     case "/":
       result = first / second;
+      break;
+    case "^":
+      result = Math.pow(first, second);
+      break;
+    case "%":
+      result = (first / 100) * second;
       break;
     default:
       break;
@@ -200,6 +210,23 @@ function clearCalc() {
   firstNumber = null;
   output.innerHTML = "0";
   nextReady = true;
+}
+
+// Extra operations listener
+extras.forEach(button => {
+  button.addEventListener("click", function() {
+    extraOperation(button.textContent);
+  });
+});
+
+// Extra operations action
+function extraOperation(choice) {
+  if (choice == "√") {
+    output.innerHTML = Math.sqrt(parseFloat(output.innerHTML)).toString();
+    nextReady = true;
+  } else {
+    operation(choice);
+  }
 }
 </script>
 
