@@ -1,9 +1,9 @@
 ---
-layout: page
+layout: post
 title: About Me
 permalink: /about/
 image: ../images/dnhs.png
-image: ../images/momo.png
+image: ../images/momo.pngc
 image: ../images/family.png
 image: ../images/yanhuoqi.jpeg
 image: ../images/caflag.png
@@ -11,7 +11,7 @@ image: ../images/cnflag.png
 image: ../images/soup.jpg
 image: ../images/town.jpg
 image: ../images/greatwall.jpg
-comment: true
+comments: True
 ---
 
 <html lang="en">
