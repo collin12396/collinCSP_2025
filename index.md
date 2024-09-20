@@ -394,7 +394,7 @@ hide: true
     <div class="submenu">
         <a id="middle" href="https://nighthawkcoders.github.io/portfolio_2025/javascript/project/play">Javascript cell &nbsp; ▶</a>
         <div class="submenu-content">
-            <a href="http://127.0.0.1:4100/collinCSP_2025/cookieclicker/">Cookie clicker</a>
+            <a href="{{site.baseurl}}/cookieclicker/">Cookie clicker</a>
             <a href="http://127.0.0.1:4100/collinCSP_2025/calculator/">Calculator</a>
             <a href="http://127.0.0.1:4100/collinCSP_2025/snake/">Snake Game</a>
         </div>
