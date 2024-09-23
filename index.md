@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Student Home 
+title: My Coding Journey
 description: Home Page
 author: Collin Ge
 image: /images/mario_animation.png
@@ -304,8 +304,8 @@ hide: true
     }
 
     .button {
-        background-color: #88bc4c;
-        color: #212121;
+        background-color: #4CAF50;
+        color: #ffffff;
         padding: 10px 15px;
         font-size: 15px;
         font-weight: bold;
@@ -320,14 +320,14 @@ hide: true
         position: absolute;
         z-index: 1;
         min-width: 200px;
-        background-color: #212121;
-        border: 2px solid #88bc4c;
+        background-color: #4CAF50;
+        border: 2px solid #ffffff;
         border-radius: 0px 15px 15px 15px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
 
     .dropdown-content a, .submenu-content a {
-        color: #88bc4c;
+        color: #ffffff;
         padding: 8px 10px;
         text-decoration: none;
         display: block;
@@ -335,13 +335,13 @@ hide: true
     }
 
     .dropdown-content a:hover, .submenu-content a:hover {
-        background-color: #88bc4c;
-        color: #212121;
+        background-color: #4CAF50;
+        color: #ffffff;
     }
 
     .dropdown-content a:focus, .submenu-content a:focus {
-        background-color: #212121;
-        color: #88bc4c;
+        background-color: #4CAF50;
+        color: #ffffff;
     }
 
     .dropdown-content #top:hover {
@@ -402,6 +402,9 @@ hide: true
     <a id="bottom" href="{{site.baseurl}}/about/">About Pages</a>
   </div>
 </div>
+<div>
+  <p></p>
+</div>  
   <div class="section" class="nklink">
     <button>CSP Button</button>
     <div>
