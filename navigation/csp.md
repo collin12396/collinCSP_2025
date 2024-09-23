@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Calendar
-permalink: csp
+permalink: /cspcalendar/
 ---
 <html lang="en">
 <head>
