@@ -1,10 +1,6 @@
 ---
 layout: post
 title: Calendar
-units: "1,2,3,4,5,6,7,8,9"
-search_exclude: true
-course: csp
-menu: nav/home.html
 permalink: csp
 ---
 <html lang="en">
@@ -208,7 +204,8 @@ permalink: csp
         const taskDateDisplay = document.getElementById("task-date");
         const currentDate = new Date();
         let selectedDate = null;
-        let tasks = {}; // Store tasks for each date
+        // Load tasks from localStorage or initialize an empty object
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || {}; 
         let currentYear = currentDate.getFullYear();
         let currentMonth = currentDate.getMonth();
 
@@ -290,28 +287,26 @@ permalink: csp
             });
         }
 
-        // Add task button click
         addTaskButton.addEventListener("click", () => {
-            const taskName = taskNameInput.value;
+            const taskName = taskNameInput.value.trim();
             if (taskName && selectedDate) {
-                const day = selectedDate.textContent;
-                const dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
+                const dateKey = `${currentYear}-${currentMonth + 1}-${selectedDate.textContent}`;
                 if (!tasks[dateKey]) {
                     tasks[dateKey] = [];
                 }
                 tasks[dateKey].push(taskName);
+                // Save tasks to localStorage
+                localStorage.setItem("tasks", JSON.stringify(tasks)); 
+                displayTasks(dateKey);
                 taskNameInput.value = ''; // Clear input
                 taskModal.style.display = "none"; // Close modal
-                displayTasks(dateKey); // Update task list
             }
         });
 
-        // Close modal button
         closeModalButton.addEventListener("click", () => {
-            taskModal.style.display = "none";
+            taskModal.style.display = "none"; // Close modal
         });
 
-        // Navigate to previous month
         document.getElementById("prev-month").addEventListener("click", () => {
             currentMonth--;
             if (currentMonth < 0) {
@@ -321,7 +316,6 @@ permalink: csp
             renderCalendar(currentYear, currentMonth);
         });
 
-        // Navigate to next month
         document.getElementById("next-month").addEventListener("click", () => {
             currentMonth++;
             if (currentMonth > 11) {
@@ -331,7 +325,9 @@ permalink: csp
             renderCalendar(currentYear, currentMonth);
         });
 
+        // Initial rendering of the calendar
         renderCalendar(currentYear, currentMonth);
     </script>
+
 </body>
 </html>
