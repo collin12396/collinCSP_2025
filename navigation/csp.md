@@ -1,22 +1,24 @@
 ---
-layout: schedule
+layout: post
 title: Calendar
 units: "1,2,3,4,5,6,7,8,9"
 search_exclude: true
 course: csp
 menu: nav/home.html
+permalink: csp
 ---
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Calendar</title>
+    <title>Interactive Calendar with Tasks</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -37,12 +39,12 @@ menu: nav/home.html
             align-items: center;
             background-color: #2196F3;
             color: white;
-            padding: 30px;
+            padding: 20px;
         }
 
         .calendar-header h2 {
             margin: 0;
-            font-size: 2em;
+            font-size: 1.5em;
         }
 
         .calendar-header button {
@@ -51,7 +53,7 @@ menu: nav/home.html
             border: none;
             padding: 10px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
             border-radius: 5px;
         }
 
@@ -62,19 +64,19 @@ menu: nav/home.html
         .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            padding: 30px;
-            gap: 15px;
+            padding: 20px;
+            gap: 10px;
         }
 
         .calendar-days div {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 1em;
             color: #333;
             transition: background-color 0.2s;
         }
@@ -95,7 +97,70 @@ menu: nav/home.html
 
         .day-header {
             background-color: #ddd;
+            font-size: 1.1em;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .modal-content input,
+        .modal-content button {
+            margin: 10px;
+            padding: 10px;
+            width: 90%;
+        }
+
+        /* Task display box */
+        .task-box {
+            width: 600px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-box h3 {
             font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .task-list li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .task-list li span {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -118,13 +183,39 @@ menu: nav/home.html
         </div>
     </div>
 
+    <!-- Task display box below the calendar -->
+    <div class="task-box">
+        <h3>Tasks for <span id="task-date">Select a date</span></h3>
+        <ul class="task-list" id="taskList">
+            <!-- Task items will be added here -->
+        </ul>
+    </div>
+
+    <!-- Modal for adding tasks -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <h3>Add Task</h3>
+            <input type="text" id="taskName" placeholder="Task Name">
+            <button id="addTaskButton">Add Task</button>
+            <button id="closeModal">Cancel</button>
+        </div>
+    </div>
+
     <script>
         const calendarDays = document.querySelector(".calendar-days");
         const monthYearDisplay = document.getElementById("month-year");
+        const taskList = document.getElementById("taskList");
+        const taskDateDisplay = document.getElementById("task-date");
         const currentDate = new Date();
         let selectedDate = null;
+        let tasks = {}; // Store tasks for each date
         let currentYear = currentDate.getFullYear();
         let currentMonth = currentDate.getMonth();
+
+        const taskModal = document.getElementById("taskModal");
+        const taskNameInput = document.getElementById("taskName");
+        const addTaskButton = document.getElementById("addTaskButton");
+        const closeModalButton = document.getElementById("closeModal");
 
         function renderCalendar(year, month) {
             // Reset calendar days
@@ -164,12 +255,12 @@ menu: nav/home.html
                     dayDiv.classList.add("current-day");
                 }
 
-                dayDiv.addEventListener("click", () => selectDate(dayDiv));
+                dayDiv.addEventListener("click", () => selectDate(dayDiv, day));
                 calendarDays.appendChild(dayDiv);
             }
         }
 
-        function selectDate(dayDiv) {
+        function selectDate(dayDiv, day) {
             // Deselect previous date
             if (selectedDate) {
                 selectedDate.classList.remove("selected");
@@ -178,7 +269,47 @@ menu: nav/home.html
             // Select new date
             selectedDate = dayDiv;
             selectedDate.classList.add("selected");
+
+            // Update task display box
+            const dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
+            taskDateDisplay.textContent = `${currentMonth + 1}/${day}/${currentYear}`;
+            displayTasks(dateKey);
+
+            // Open modal for task input
+            taskModal.style.display = "flex";
         }
+
+        function displayTasks(dateKey) {
+            taskList.innerHTML = ''; // Clear current tasks
+            const tasksForDate = tasks[dateKey] || [];
+
+            tasksForDate.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                taskList.appendChild(li);
+            });
+        }
+
+        // Add task button click
+        addTaskButton.addEventListener("click", () => {
+            const taskName = taskNameInput.value;
+            if (taskName && selectedDate) {
+                const day = selectedDate.textContent;
+                const dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
+                if (!tasks[dateKey]) {
+                    tasks[dateKey] = [];
+                }
+                tasks[dateKey].push(taskName);
+                taskNameInput.value = ''; // Clear input
+                taskModal.style.display = "none"; // Close modal
+                displayTasks(dateKey); // Update task list
+            }
+        });
+
+        // Close modal button
+        closeModalButton.addEventListener("click", () => {
+            taskModal.style.display = "none";
+        });
 
         // Navigate to previous month
         document.getElementById("prev-month").addEventListener("click", () => {

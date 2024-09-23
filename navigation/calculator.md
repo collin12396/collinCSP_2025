@@ -2,6 +2,7 @@
 layout: post
 title: Calculator
 permalink: /calculator/
+comments: true
 ---
 <style>
   body {

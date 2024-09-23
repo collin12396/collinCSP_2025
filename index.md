@@ -390,7 +390,7 @@ hide: true
 <div class="paste-button">
   <button class="button">Menu &nbsp; ▼</button>
   <div class="dropdown-content">
-    <a id="top" href="{{site.baseurl}}/calendar/">Calendar</a>
+    <a id="top" href="{{site.baseurl}}/csp/">Calendar</a>
     <div class="submenu">
         <a id="middle" href="https://nighthawkcoders.github.io/portfolio_2025/javascript/project/play">Javascript cell &nbsp; ▶</a>
         <div class="submenu-content">
