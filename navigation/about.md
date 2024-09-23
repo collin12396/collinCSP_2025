@@ -93,6 +93,13 @@ comments: true
         <img src="../images/town.jpg" alt="town">
         <img src="../images/greatwall.jpg" alt="greatwall">
     </div>
+<script src="https://utteranc.es/client.js"
+        repo="collin12396/collin12396/collinCSP_2025"
+        issue-term="/collinCSP_2025"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>   
 </body>
 </html>
 
