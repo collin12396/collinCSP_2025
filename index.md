@@ -294,6 +294,9 @@ hide: true
         <p>
             When setting up the tools, the biggest problem I encounter is the problem of root. Which is most possibly caused by me forgetting the first username and password. First, I tried to check my username on terminal, but only my username show, which is my first account "collin". After that, I find out that the password does not show and I don't know how to edit it. I choose to create a new account name "Qixiang" and set up the password and username. But it still shows the root in front of my account. At last, I tried deleting everything and follow from step one and see if it fix, then I download everything I need and download the vs code, then it finally work and it quit root.
         </p>
+        <p>
+        - Good luck! 😊
+        </p>
     </div>
 </body>
 <style>
