@@ -390,16 +390,16 @@ hide: true
 <div class="paste-button">
   <button class="button">Menu &nbsp; ▼</button>
   <div class="dropdown-content">
-    <a id="top" href="http://127.0.0.1:4100/collinCSP_2025/blogs/">blog</a>
+    <a id="top" href="{{site.baseurl}}/blogs/">blog</a>
     <div class="submenu">
         <a id="middle" href="https://nighthawkcoders.github.io/portfolio_2025/javascript/project/play">Javascript cell &nbsp; ▶</a>
         <div class="submenu-content">
             <a href="{{site.baseurl}}/cookieclicker/">Cookie clicker</a>
-            <a href="http://127.0.0.1:4100/collinCSP_2025/calculator/">Calculator</a>
-            <a href="http://127.0.0.1:4100/collinCSP_2025/snake/">Snake Game</a>
+            <a href="{{site.baseurl}}/calculator/">Calculator</a>
+            <a href="{{site.baseurl}}/snake/">Snake Game</a>
         </div>
     </div>
-    <a id="bottom" href="http://127.0.0.1:4100/collinCSP_2025/about/">About Pages</a>
+    <a id="bottom" href="{{site.baseurl}}/about/">About Pages</a>
   </div>
 </div>
   <div class="section" class="nklink">

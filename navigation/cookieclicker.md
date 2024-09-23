@@ -23,6 +23,21 @@ permalink: /cookieclicker/
             display: inline-block;
             cursor: pointer;
             margin: 20px;
+            transition: transform 0.1s ease; /* Smooth transition */
+        }
+        .cookie:active {
+            animation: zoomOut 0.1s ease;
+        }
+        @keyframes zoomOut {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         .score {
             font-size: 24px;
