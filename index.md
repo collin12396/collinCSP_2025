@@ -400,6 +400,7 @@ hide: true
             <a href="{{site.baseurl}}/cookieclicker/">Cookie clicker</a>
             <a href="{{site.baseurl}}/calculator/">Calculator</a>
             <a href="{{site.baseurl}}/snake/">Snake Game</a>
+            <a href="{{site.baseurl}}/jupyternotebook/">Jupyter Notebook</a>
         </div>
     </div>
     <a id="bottom" href="{{site.baseurl}}/about/">About Pages</a>

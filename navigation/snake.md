@@ -298,7 +298,7 @@ permalink: /snake/
             snake_next_dir = 1;
             addFood();
             canvas.onkeydown = function(evt){
-                changeDir(evt.keyCode);
+                changeDir(evt.keyCode, evt);  // Pass event to changeDir function
             }
             mainLoop();
         }
@@ -315,7 +315,9 @@ permalink: /snake/
             ele_score.innerHTML = score_value;
         }
 
-        let changeDir = function(key_code){
+        let changeDir = function(key_code, evt){
+            evt.preventDefault();  // Prevent default scrolling behavior
+
             switch(key_code){
                 case 38: // Up
                     if(snake_dir !== 2){
